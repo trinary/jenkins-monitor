@@ -30,3 +30,4 @@ var jenkinsDashboard = {
 		jenkinsDashboard.addTimestampToBuild($(".disabled, .aborted"));		
 	}
 }
+
