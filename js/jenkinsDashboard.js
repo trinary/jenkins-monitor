@@ -14,16 +14,18 @@ var jenkinsDashboard = {
 		});
 	},
 	composeHtmlFragement: function(jobs){
-		var fragment = document.createDocumentFragment();
-		var fragment = "<section>";
+		var section = $("<section>");
 		$.each(jobs, function(){
 			if((jobs_to_be_filtered.length ==0 || $.inArray(this.name, jobs_to_be_filtered) != -1) && ($.inArray(this.name, jobs_to_be_excluded) == -1)){
-				fragment += ("<article class=" + this.color + "><head>" + this.name + "</head></article>");
+        var article = $("<article>");
+        article.addClass(this.color);
+        article.addClass("job");
+        article.append("<head>"+this.name+"</head>");
+        section.append(article);
 			}
 		});
 		dashboardLastUpdatedTime = new Date();
-		fragment +="<article class='time'>" + dashboardLastUpdatedTime.toString('dd, MMMM ,yyyy')  + "</article></section>";
-		$("#content").html(fragment);
+		$("#content").html(section);
 	},
 	updateBuildStatus : function(data) {
 		jenkinsDashboard.composeHtmlFragement(data.jobs);
