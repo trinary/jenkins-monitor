@@ -16,7 +16,7 @@ var jenkinsDashboard = {
 	composeHtmlFragement: function(jobs){
 		var section = $("<section>");
 		$.each(jobs, function(){
-			if((jobs_to_be_filtered.length ==0 || $.inArray(this.name, jobs_to_be_filtered) != -1) && ($.inArray(this.name, jobs_to_be_excluded) == -1)){
+			if((jobs_to_be_filtered.length ==1 || $.inArray(this.name, jobs_to_be_filtered) != -1) && ($.inArray(this.name, jobs_to_be_excluded) == -1)){
         var article = $("<article>");
         article.addClass(this.color);
         article.addClass("job");
